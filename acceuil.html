@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sportify: Consultation Sportive</title>
+    <link rel="icon" href="image/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style_acceuil.css">
+    <script src="script-acceuil.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="pp">
+            <nav class="navbar navbar-expand-md">
+                <a class="navbar-brand" href="#">Sportify</a>
+                <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="main-navigation">
+                    <ul>
+                    <li class="nav-item"><a class="nav-link" href="#">Accueil</a></li>
+                    <div class="nav-item">
+                        <li class="dropdown"><a class="nav-link dropdown-link" href="browse.html">Tout Parcourir</a>
+                            <div class="dropdown-content">
+                                <div class="categorie">
+                                    <h3>Activités Sportives</h3>
+                                    <ul class="sub-menu">
+                                        <li><a href="activites/musculation.html">Musculation</a></li>
+                                        <li><a href="activites/fitness.html">Fitness</a></li>
+                                        <li><a href="activites/biking.html">Biking</a></li>
+                                        <li><a href="activites/cardio-training.html">Cardio-Training</a></li>
+                                        <li><a href="activites/cours-collectifs.html">Cours Collectifs</a></li>
+                                    </ul>
+                                </div>
+                                <div class="categorie">
+                                    <h3>Sports de Compétition</h3>
+                                    <ul class="sub-menu">
+                                        <li><a href="competition/basketball.html">Basketball</a></li>
+                                        <li><a href="competition/football.html">Football</a></li>
+                                        <li><a href="competition/rugby.html">Rugby</a></li>
+                                        <li><a href="competition/tennis.html">Tennis</a></li>
+                                        <li><a href="competition/natation.html">Natation</a></li>
+                                        <li><a href="competition/plongeon.html">Plongeon</a></li>
+                                    </ul>
+                                </div>
+                                <div class="categorie">
+                                    <h3>Salle de Sport Omnes</h3>
+                                    <ul class="sub-menu">
+                                        <li><a href="salle/gym.html">Horaire de la gym</a></li>
+                                        <li><a href="salle/regles.html">Règles d'utilisation des machines</a></li>
+                                        <li><a href="salle/nouveaux-clients.html">Nouveaux clients</a></li>
+                                        <li><a href="salle/alimentation-nutrition.html">Alimentation et nutrition</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </div>
+                    <li class="nav-item"><a class="nav-link" href="search.html">Recherche</a></li>
+                    <li class="nav-item"><a class="nav-link" href="appointments.html">Rendez-vous</a></li>
+                    <li class="nav-item"><a class="nav-link" href="account.html">Votre Compte</a></li>
+                </ul>
+                </div>
+            </nav>
+
+            <div class="container_titre"> 
+                <h1><spam class ="auto-typing"></spam></h1>
+            </div>
+        </div>
+        <main>
+            <div class="bandeau">
+                <img src="image/course_presentation.jpeg" alt="course">
+                <img src="image/foot_presentation.jpeg" alt="foot">
+                <img src="image/natation_presentation.jpeg" alt="Sportify Logo">
+                <img src="image/saut_hauteur_presentation.jpeg" alt="Sportify Logo">
+                <img src="image/vélo_presentation.jpeg" alt="Sportify Logo">
+            </div>
+            <section id="bienvenue">
+                <h1>Bienvenue sur Sportify</h1>
+                <p>La plateforme de consultation sportive en ligne pour la communauté Omnes Education. Prenez rendez-vous avec nos spécialistes, consultez leurs disponibilités, et participez à des activités sportives variées.</p>
+            </section>
+
+            <section id="evenement">
+                <h2>Événement de la Semaine</h2>
+                <div class="evenement-details">
+                    <img src="path/to/event_image.jpg" alt="Événement de la Semaine">
+                    <p>Ne manquez pas notre porte ouverte de Sportify le samedi 3 juin 2024. Rencontrez les coachs et participez à des démonstrations sportives exclusives !</p>
+                </div>
+            </section>
+
+            <section id="specialistes">
+                <h2>Nos Spécialistes</h2>
+                <div class="carousel">
+                    <div class="carousel-item">
+                        <img src="path/to/coach1.jpg" alt="Coach 1">
+                        <p>Nom du Coach 1 - Spécialité</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="path/to/coach2.jpg" alt="Coach 2">
+                        <p>Nom du Coach 2 - Spécialité</p>
+                    </div>
+                    <!-- Ajouter plus de coachs ici -->
+                </div>
+            </section>
+
+            <section id="bulletin">
+                <h2>Bulletin Sportif de la Semaine</h2>
+                <p>Découvrez les dernières nouvelles et les événements sportifs de la semaine. Restez informés des compétitions et des performances de nos athlètes.</p>
+                <ul>
+                    <li><a href="link_to_news1">Nouvelle 1: Compétition sportive collégiale</a></li>
+                    <li><a href="link_to_news2">Nouvelle 2: Exhibition des joueurs olympiques</a></li>
+                    <!-- Ajouter plus de nouvelles ici -->
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <div class="contact-info">
+                <p>Contactez-nous :</p>
+                <p>Email : contact@sportify.com</p>
+                <p>Téléphone : 01 23 45 67 89</p>
+                <p>Adresse : 123 Rue de Sport, Paris, France</p>
+            </div>
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9994546045826!2d2.2944812156751254!3d48.85884477928792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fddf202e68d%3A0xa567d89f9f76df8b!2sEiffel%20Tower!5e0!3m2!1sen!2sfr!4v1622298836339!5m2!1sen!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </footer>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        let typed = new Typed('.auto-typing', {
+            strings: ['Bienvenue sur Sportify', 'Welcome on Sportify','Sportify : Consultation sportive'],
+            typeSpeed: 150,
+            backSpeed: 150,
+            loop: true,
+            fadeOut: true,
+            fadeOutClass: 'typed-fade-out',
+            fadeOutDelay: 500
+        });
+    </script>
+</body>
+</html>

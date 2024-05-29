@@ -1,0 +1,45 @@
+body {
+    margin : 0;
+    padding : 0;
+}
+
+.musculation {
+    background-image: url("image/muscu.webp");
+    background-size: cover;
+}
+
+.fitness {
+    background-image: url("image/fitness.webp");
+    background-size: cover;
+}
+
+.header {
+    padding-left : 33%;
+    font-size: 35px;
+    background: linear-gradient(to right, #2208e6, #ca1717);
+    -webkit-background-clip: text;
+    color: transparent;
+}   
+
+.navbar {
+    background: linear-gradient(to right, #e26732, #61e23d);
+}
+   
+.nav-link, .navbar-brand {
+    color: #1d3d9c;
+    font-size: 120%;
+    font-weight:bolder;
+    cursor: pointer;
+}
+   
+.nav-link {
+    margin-right: 1em !important;
+}
+   
+.nav-link:hover {
+    color: #c21a1a;
+}
+   
+.navbar-collapse {  
+    justify-content: flex-end;
+}
