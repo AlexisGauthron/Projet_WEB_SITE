@@ -1,12 +1,40 @@
 <?php
 echo '<meta charset="utf-8">';
-//echo '<link rel="stylesheet" type="text/css" href="dupondStyle.css">';
-//identifier votre BDD
 
+function affichage($db_handle, $email){
 
+			$sql = "SELECT ID_Consultation,Date,Heure,Commentaire,NomCoach,PrénomCoach,Specialité FROM Consultation,Client,Coach WHERE IDclient = ID_Client AND Email = '$email' AND IDcoach = ID_Coach;";
+			echo"$sql";
+			$result = mysqli_query($db_handle,$sql);
+			if (mysqli_num_rows($result) > 0) {
+				echo "<h1>Vos consultation sont :</h1>";
+				echo "<table border=\"1\">";
+				echo "<tr>";
+				echo "<th>" . "Date" . "</th>";
+				echo "<th>" . "Heure" . "</th>";
+				echo "<th>" . "Commentaire" . "</th>";
+				echo "<th>" . "Coach" . "</th>";
+				echo "<th>" . "Activité" . "</th>";
+				echo "</tr>";
+				while ($data = mysqli_fetch_assoc($result)){
+					echo "<tr>";
+					echo "<td>" . $data['Date'] . "</td>";
+					echo "<td>" . $data['Heure'] . "</td>";
+					echo "<td>" . $data['Commentaire'] . "</td>";
+					echo "<td>" . $data['NomCoach']." ".$data['PrénomCoach'] . "</td>";
+					echo "<td>" . $data['Specialité']."</td>";
+					echo '<form method="post" action ="">';
+					echo '<input type="hidden" name="consultation" value='.$data["ID_Consultation"].'>';
+					echo '<input type="hidden" name="Email" value='.$email.'>';
+					echo '<td><input type="submit" name="supprimer" value="Annuler ce RDV"></td>';
+					echo"</form";
+					echo "</tr>";
+				}
+				echo "</table>";
+			}else echo "<p>Vous n'avez pas de consultation passées ou prévues.</p>";
+}
 
 $database = "Projet";
-//identifier votre serveur, login et mot de passe
 $db_handle = mysqli_connect('localhost', 'root', 'root');
 $db_found = mysqli_select_db($db_handle, $database);
 
@@ -23,53 +51,39 @@ $tel = isset($_POST["tel"])? $_POST["tel"] : "";
 
 
 $sql = "";
-$erreur = false;
+
 $errorMessage = "";
 
+
 if ($db_found) {
-	$existe = 1;
+	$erreur = false;
 	if(isset($_POST['connexion'])) { 
-		$sql = "SELECT * FROM Client WHERE Email ='$email' AND Mot_de_passe = '$mdp' ";
+		$sql = "SELECT Mot_de_passe FROM Client WHERE Email ='$email' ";
 		echo "$sql";
 		$result = mysqli_query($db_handle,$sql);
-		if (mysqli_fetch_assoc($result) !=0){
-			echo "Bonjour ".$prenom." !";
-			$existe =0;
-		}
-		// METTRE LE SERVICE DE LA SALLE DE SPORT !!
-		$sql = "SELECT ID_Coach,ID_Client, Date,Heure,Commentaire FROM Consultation,Client WHERE Email = '$email' ";
-		$result = mysqli_query($db_handle,$sql);
-		if (mysqli_num_rows($result) > 0) {
-			echo "<h1>Vos consultation sont :</h1>";
-			//echo "Requete :".$sql."<br>";
-			echo "<table border=\"1\">";
-			echo "<tr>";
-			echo "<th>" . "ID" . "</th>";
-			echo "<th>" . "Nom" . "</th>";
-			echo "<th>" . "Prénom" . "</th>";
-			echo "<th>" . "Statut" . "</th>";
-			echo "<th>" . "Date de naissance" . "</th>";
-			echo "<th>" . "Photo" . "</th>";
-			echo "</tr>";
-				//afficher le résultat
-			//INSERT INTO `Consultation`(`ID_Consultation`, `ID coach`, `ID client`, `Date`, `Heure`, `Commentaire`) VALUES ('1','1','1','02/05/2024','14','Aucun')
-			while ($data = mysqli_fetch_assoc($result)){
-				echo "<tr>";
-				echo "<td>" . $data['ID'] . "</td>";
-				echo "<td>" . $data['Titre'] . "</td>";
-				echo "<td>" . $data['Auteur'] . "</td>";
-				echo "<td>" . $data['Année'] . "</td>";
-				echo "<td>" . $data['Editeur'] . "</td>";
-				$image = $data['Couverture'];
-				echo "<td>" . "<img src='$image' height='60' width='80'>" . "</td>";
-				echo "</tr>";
+		if (mysqli_fetch_assoc($result) ==0){
+			echo "Pas de compte avec cette adresse mail créez un compte ou réessayez";
+			$erreur = true;
+		}else{
+			$mot = mysqli_fetch_assoc($result);
+
+			echo $mot['Mot_de_passe'];
+			if ($mot['Mot_de_passe'] == $mdp){
+				echo "bon mdp";
+			}else {
+				echo "pas bon mdp";
+				$erreur = true;
 			}
-			echo "</table>";
-		}else echo "<p>Vous n'avez pas de consultation passées ou prévues.</p>";
+		}
+		if ($erreur == false){
+			echo " Bonjour ".$prenom." !";
+			affichage($db_handle, $email);
+		}
+		
 
 	}
 	if(isset($_POST['creation'])) { 
-		if ($nom == "" || $prenom == "" || $email == "" ||$carte == "" || $paiement == ""){
+		if ($nom == "" || $prenom == "" || $email == "" ||$carte == "" || $paiement == ""|| $adresse == ""){
 			
 			echo("<p>"."Une valeur est nulle"."</p>");
 
@@ -77,13 +91,10 @@ if ($db_found) {
 			$sql = "SELECT * FROM Client WHERE Email = '$email'";
 			$result = mysqli_query($db_handle, $sql);
 			if (mysqli_num_rows($result) > 0) {
-				$existe = 0;
 				echo  "<p>Un compte avec cette adresse mail existe déjà.</p>";
 			} else {
-				$sql = "INSERT INTO Client(ID_Client,Nom, Prénom, Email, Carte_etudiante, Adresse,Téléphone, Mot_de_passe) VALUES(2,'$nom', '$prenom', '$email', '$carte', '2 av','$tel','$mdp')";
+				$sql = "INSERT INTO Client(ID_Client,Nom, Prénom, Email, Carte_etudiante, Adresse,Téléphone, Mot_de_passe) VALUES(2,'$nom', '$prenom', '$email', '$carte', '$adresse','$tel','$mdp')";
 				echo($sql);
-				//$result = mysqli_query($db_handle, $sql);
-				//echo "<p>Votre compte a été créé avec succès</p>";
 				$stmt = mysqli_prepare($db_handle, $sql);
                 mysqli_stmt_bind_param($stmt, 'sssssss', $nom, $prenom, $email, $carte, $adresse, $tel, $mdp);
                 
@@ -92,11 +103,18 @@ if ($db_found) {
                 } else {
                     echo "<p>Erreur lors de la création du compte : " . mysqli_error($db_handle) . "</p>";
                 }
-				
-				//$sql = "SELECT * FROM Client ORDER BY ID DESC LIMIT 1";
 			}
 
 		}
+	}
+	if (isset($_POST['supprimer'])){
+
+		$email = isset($_POST["Email"])? $_POST["Email"] : "";
+		$consultation = isset($_POST["consultation"])? $_POST["consultation"] : "";
+		$sql = "DELETE FROM Consultation WHERE ID_Consultation = '$consultation' ";
+		$result = mysqli_query($db_handle, $sql);
+		echo "<p>Votre rendez-vous a bien été supprimé</p><p>Voici vos prohaines consultations</p>";
+		affichage($db_handle, $email);
 	}
 
 }
