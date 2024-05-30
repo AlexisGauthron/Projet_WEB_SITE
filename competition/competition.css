@@ -3,30 +3,36 @@ body {
     padding : 0;
 }
 
-.musculation {
-    background-image: url("image/muscu.webp");
+.basketball {
+    background-image: url("image/basketball.webp");
     background-size: cover;
 }
 
-.fitness {
-    background-image: url("image/fitness.webp");
+.football {
+    background-image: url("image/football.webp");
     background-size: cover;
 }
 
-.cours-collectifs {
-    background-image: url("image/cours-collectifs.webp");
+.natation {
+    background-image: url("image/natation.webp");
     background-size: cover;
 }
 
-.cardio-training {
-    background-image: url("image/cardio-training.webp");
+.plongeon {
+    background-image: url("image/plongeon.webp");
     background-size: cover;
 }
 
-.biking {
-    background-image: url("image/biking.webp");
+.rugby{
+    background-image: url("image/rugby.webp");
     background-size: cover;
 }
+
+.tennis{
+    background-image: url("image/tennis.webp");
+    background-size: cover;
+}
+
 
 .container_titre {
     position: relative;
@@ -49,6 +55,10 @@ body {
     text-shadow: 10px 10px 30px white;
 }
 
+.auto-typing_n {
+    text-shadow: 10px 10px 30px rgb(0, 0, 0, 0.8);
+}
+
 .header {
     padding-left : 33%;
     font-size: 35px;
@@ -58,7 +68,7 @@ body {
 }   
 
 .navbar {
-    background: linear-gradient(to right, #e26732, #61e23d);
+    background: linear-gradient(to right, #b82815, #753e0a);
 }
    
 .nav-link, .navbar-brand {

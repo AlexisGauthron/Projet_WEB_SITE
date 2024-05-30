@@ -47,7 +47,7 @@ body{
     text-shadow: 10px 10px 30px white;
     text-align: center;
     font-weight: bolder;
-    font-size: 35px;
+    font-size: 50px;
     padding-right: 20%;
     padding-left: 20%;
     font-family: 'Times New Roman', Times, serif;
@@ -70,7 +70,6 @@ body{
 .header {
     padding-left : 33%;
     font-size: 35px;
-    background-color: #2208e6 ;
 }   
 
 .navbar {
@@ -190,7 +189,7 @@ main {
 }
 
 .bandeau {
-    height: 173px;
+    height: 21.5rem;
     display: flex;
     background-size: cover;
     background-position: center;

@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const body = document.querySelector('.pp');
         const title = document.querySelector('.container_titre h1');
         const scrollLimit = 2700; // Définissez la distance de défilement limite en pixels
-        body.style.height = '600vh';
+        body.style.height = '300vh';
 
         const blackDot = document.querySelector('.point_noir');
         const blackDotAppear = 500; // Distance à partir de laquelle le point noir apparaît
