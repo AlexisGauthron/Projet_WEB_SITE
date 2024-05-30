@@ -1,6 +1,14 @@
 body {
     margin : 0;
     padding : 0;
+    background-color: black;
+    color: white;
+}
+
+.activites {
+    background-image: url("image/activites.webp");
+    background-size: cover;
+
 }
 
 .musculation {
@@ -47,15 +55,7 @@ body {
 
 .auto-typing {
     text-shadow: 10px 10px 30px white;
-}
-
-.header {
-    padding-left : 33%;
-    font-size: 35px;
-    background: linear-gradient(to right, #2208e6, #ca1717);
-    -webkit-background-clip: text;
-    color: transparent;
-}   
+} 
 
 .navbar {
     background: linear-gradient(to right, #e26732, #61e23d);
@@ -78,4 +78,52 @@ body {
    
 .navbar-collapse {  
     justify-content: flex-end;
+}
+
+.card {
+    display: flex;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+}
+
+.card-image img {
+    width: 200px;
+    height: auto;
+    border-right: 2px solid #ccc;
+}
+
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-content h2 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+}
+
+.card-content p {
+    margin: 5px 0;
+}
+
+.service-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.service-button:hover {
+    background-color: #e6b800;
 }

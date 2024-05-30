@@ -3,41 +3,20 @@ body {
     padding : 0;
 }
 
-.competition {
-    background-image: url("image/competition.webp");
+.Votre_Compte {
+    background-image: url("image/compte.webp");
     background-size: cover;
 }
 
-.basketball {
-    background-image: url("image/basketball.webp");
+.Rendez-vous {
+    background-image: url("image/Rendez-vous.webp");
     background-size: cover;
 }
 
-.football {
-    background-image: url("image/football.webp");
+.Recherche {
+    background-image: url("image/recherche.webp");
     background-size: cover;
 }
-
-.natation {
-    background-image: url("image/natation.webp");
-    background-size: cover;
-}
-
-.plongeon {
-    background-image: url("image/plongeon.webp");
-    background-size: cover;
-}
-
-.rugby{
-    background-image: url("image/rugby.webp");
-    background-size: cover;
-}
-
-.tennis{
-    background-image: url("image/tennis.webp");
-    background-size: cover;
-}
-
 
 .container_titre {
     position: relative;
@@ -65,7 +44,7 @@ body {
 }  
 
 .navbar {
-    background: linear-gradient(to right, #b82815, #753e0a);
+    background: linear-gradient(to right, #e26732, #61e23d);
 }
    
 .nav-link, .navbar-brand {

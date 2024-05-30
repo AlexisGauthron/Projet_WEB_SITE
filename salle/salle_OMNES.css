@@ -3,38 +3,34 @@ body {
     padding : 0;
 }
 
-.competition {
-    background-image: url("image/competition.webp");
+
+.salle_de_sport{
+    background-image: url("image/salle_de_sport_OMNES.webp");
     background-size: cover;
 }
 
-.basketball {
-    background-image: url("image/basketball.webp");
+.personnels {
+    background-image: url("image/salle_de_sport_OMNES.webp");
     background-size: cover;
 }
 
-.football {
-    background-image: url("image/football.webp");
+.horaire {
+    background-image: url("image/salle_de_sport_OMNES.webp");
     background-size: cover;
 }
 
-.natation {
-    background-image: url("image/natation.webp");
+.nouveaux-clients {
+    background-image: url("image/salle_de_sport_OMNES.webp");
     background-size: cover;
 }
 
-.plongeon {
-    background-image: url("image/plongeon.webp");
+.regles-de-la-salle {
+    background-image: url("image/salle_de_sport_OMNES.webp");
     background-size: cover;
 }
 
-.rugby{
-    background-image: url("image/rugby.webp");
-    background-size: cover;
-}
-
-.tennis{
-    background-image: url("image/tennis.webp");
+.alimentation-nutrition{
+    background-image: url("image/salle_de_sport_OMNES.webp");
     background-size: cover;
 }
 
@@ -65,7 +61,7 @@ body {
 }  
 
 .navbar {
-    background: linear-gradient(to right, #b82815, #753e0a);
+    background: linear-gradient(to right, #1518b8, #0a751c);
 }
    
 .nav-link, .navbar-brand {

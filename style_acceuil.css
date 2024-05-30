@@ -65,11 +65,6 @@ body{
     transform: translate(-50%, -50%); /* Pour compenser les 50% de left et top */
     opacity: 0; /* Caché par défaut */
     transition: opacity 0.5s ease-in-out; /* Transition pour l'apparition/disparition */
-}
-
-.header {
-    padding-left : 33%;
-    font-size: 35px;
 }   
 
 .navbar {
