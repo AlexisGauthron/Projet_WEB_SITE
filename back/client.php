@@ -3,11 +3,11 @@ echo '<meta charset="utf-8">';
 
 function affichage($db_handle, $email){
 
-			$sql = "SELECT ID_Consultation,Date,Heure,Commentaire,NomCoach,PrénomCoach,Specialité FROM Consultation,Client,Coach WHERE IDclient = ID_Client AND Email = '$email' AND IDcoach = ID_Coach;";
-			echo"$sql";
+			$sql = "SELECT ID_Consultation,Date,Heure,Commentaire,NomCoach,PrénomCoach,Specialité FROM Consultation,Client,Coach WHERE IDclient = ID_Client AND EmailClient = '$email' AND IDcoach = ID_Coach;";
+			//echo"$sql";
 			$result = mysqli_query($db_handle,$sql);
 			if (mysqli_num_rows($result) > 0) {
-				echo "<h1>Vos consultation sont :</h1>";
+				echo "<h1>Vos consultations sont :</h1>";
 				echo "<table border=\"1\">";
 				echo "<tr>";
 				echo "<th>" . "Date" . "</th>";
@@ -58,8 +58,8 @@ $errorMessage = "";
 if ($db_found) {
 	$erreur = false;
 	if(isset($_POST['connexion'])) { 
-		$sql = "SELECT Mot_de_passe FROM Client WHERE Email ='$email' ";
-		echo "$sql";
+		$sql = "SELECT Mot_de_passe FROM Client WHERE EmailClient ='$email' ";
+		//echo "$sql";
 		$result = mysqli_query($db_handle,$sql);
 		if (mysqli_fetch_assoc($result) ==0){
 			echo "Pas de compte avec cette adresse mail créez un compte ou réessayez";
@@ -83,18 +83,24 @@ if ($db_found) {
 
 	}
 	if(isset($_POST['creation'])) { 
-		if ($nom == "" || $prenom == "" || $email == "" ||$carte == "" || $paiement == ""|| $adresse == ""){
+		if ($nom == "" || $prenom == "" || $email == "" ||$carte == "" || $paiement == ""|| $adresse == ""||$mdp ==""){
 			
 			echo("<p>"."Une valeur est nulle"."</p>");
 
 		}else{
-			$sql = "SELECT * FROM Client WHERE Email = '$email'";
+			$sql = "SELECT * FROM Client WHERE EmailClient = '$email'";
+			echo "$sql";
 			$result = mysqli_query($db_handle, $sql);
 			if (mysqli_num_rows($result) > 0) {
 				echo  "<p>Un compte avec cette adresse mail existe déjà.</p>";
 			} else {
-				$sql = "INSERT INTO Client(ID_Client,Nom, Prénom, Email, Carte_etudiante, Adresse,Téléphone, Mot_de_passe) VALUES(2,'$nom', '$prenom', '$email', '$carte', '$adresse','$tel','$mdp')";
-				echo($sql);
+				$sql = "SELECT MAX(ID_Client) AS id_max FROM Client";
+    			$result = mysqli_query($db_handle, $sql);
+    			$row = mysqli_fetch_assoc($result);
+    			$id_max = $row['id_max'];
+    			$id_max = $id_max +1;
+				$sql = "INSERT INTO Client(ID_Client,NomClient, PrénomClient, EmailClient, Carte_etudiante, Adresse,Téléphone, Mot_de_passe) VALUES($id_max,'$nom', '$prenom', '$email', '$carte', '$adresse','$tel','$mdp')";
+				//echo($sql);
 				$stmt = mysqli_prepare($db_handle, $sql);
                 mysqli_stmt_bind_param($stmt, 'sssssss', $nom, $prenom, $email, $carte, $adresse, $tel, $mdp);
                 
@@ -109,7 +115,7 @@ if ($db_found) {
 	}
 	if (isset($_POST['supprimer'])){
 
-		$email = isset($_POST["Email"])? $_POST["Email"] : "";
+		$email = isset($_POST["Email "])? $_POST["Email"] : "";
 		$consultation = isset($_POST["consultation"])? $_POST["consultation"] : "";
 		$sql = "DELETE FROM Consultation WHERE ID_Consultation = '$consultation' ";
 		$result = mysqli_query($db_handle, $sql);
