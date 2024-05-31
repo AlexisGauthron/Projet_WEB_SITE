@@ -105,7 +105,7 @@ body{
 
 
 .dropdown-link:hover, .dropdown:hover .dropdown-link {
-    color: rgb(27,121,);
+    color: #1d3d9c;
     background: rgb(255,255,255,0.35);
     border-radius: 10px;
 }   
@@ -180,7 +180,7 @@ body{
 
 main {
     z-index: -1;
-    background-color: #000000ed;
+    background-color: black;
 }
 
 .bandeau {
