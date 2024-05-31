@@ -1,9 +1,13 @@
 <?php
 echo '<meta charset="utf-8">';
 
-$database = "nb";
-$db_handle = mysqli_connect('localhost', 'root',);
+$database = "Projet";
+$db_handle = mysqli_connect('localhost', 'root', 'root');
 $db_found = mysqli_select_db($db_handle, $database);
+
+if (!$db_found) {
+    die("<p>Erreur de connexion à la base de données.</p>");
+}
 
 function affichage($db_handle, $email){
     $sql = "SELECT ID_Consultation, Date, Heure, Commentaire, NomCoach, PrénomCoach, Specialité FROM Consultation, Client, Coach WHERE IDclient = ID_Client AND EmailClient = '$email' AND IDcoach = ID_Coach;";
@@ -49,12 +53,12 @@ if ($db_found) {
     $tel = isset($_POST["tel"]) ? $_POST["tel"] : "";
 
     if (isset($_POST['connexion'])) {
-        $sql = "SELECT Mot_de_passe FROM Client WHERE EmailClient = '$email'";
+        $sql = "SELECT Mot_de_passe, PrénomClient FROM Client WHERE EmailClient = '$email'";
         $result = mysqli_query($db_handle, $sql);
         if ($result && mysqli_num_rows($result) > 0) {
             $mot = mysqli_fetch_assoc($result);
             if ($mot['Mot_de_passe'] == $mdp) {
-                echo "Bonjour " . $prenom . " !";
+                echo "Bonjour " . $mot['PrénomClient'] . " !";
                 affichage($db_handle, $email);
             } else {
                 echo "Mot de passe incorrect.";
@@ -104,15 +108,23 @@ if ($db_found) {
         $prenomCoach = isset($_POST['PrenomCoach']) ? $_POST['PrenomCoach'] : '';
         $emailCoach = isset($_POST['EmailCoach']) ? $_POST['EmailCoach'] : '';
         $specialite = isset($_POST['Specialite']) ? $_POST['Specialite'] : '';
+        $photoCoach = $_FILES['PhotoCoach']['name'];
+        $photoTmpName = $_FILES['PhotoCoach']['tmp_name'];
+        $photoDir = 'uploads/';
+        $photoPath = $photoDir . basename($photoCoach);
 
-        if ($nomCoach != '' && $prenomCoach != '' && $emailCoach != '' && $specialite != '') {
-            $sql = "INSERT INTO Coach (NomCoach, PrénomCoach, EmailCoach, Specialité) VALUES (?, ?, ?, ?)";
-            $stmt = mysqli_prepare($db_handle, $sql);
-            mysqli_stmt_bind_param($stmt, 'ssss', $nomCoach, $prenomCoach, $emailCoach, $specialite);
-            if (mysqli_stmt_execute($stmt)) {
-                echo "<p>Coach créé avec succès.</p>";
+        if ($nomCoach != '' && $prenomCoach != '' && $emailCoach != '' && $specialite != '' && $photoCoach != '') {
+            if (move_uploaded_file($photoTmpName, $photoPath)) {
+                $sql = "INSERT INTO Coach (NomCoach, PrénomCoach, EmailCoach, Specialité, PhotoCoach) VALUES (?, ?, ?, ?, ?)";
+                $stmt = mysqli_prepare($db_handle, $sql);
+                mysqli_stmt_bind_param($stmt, 'sssss', $nomCoach, $prenomCoach, $emailCoach, $specialite, $photoPath);
+                if (mysqli_stmt_execute($stmt)) {
+                    echo "<p>Coach créé avec succès.</p>";
+                } else {
+                    echo "<p>Erreur lors de la création du coach : " . mysqli_error($db_handle) . "</p>";
+                }
             } else {
-                echo "<p>Erreur lors de la création du coach : " . mysqli_error($db_handle) . "</p>";
+                echo "<p>Erreur lors du téléchargement de la photo.</p>";
             }
         } else {
             echo "<p>Tous les champs sont requis.</p>";
