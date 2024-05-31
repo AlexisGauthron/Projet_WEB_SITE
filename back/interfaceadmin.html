@@ -2,68 +2,59 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion des Coaches et des Clients</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        form {
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        form h2 {
-            margin-top: 0;
-        }
-        label {
-            display: inline-block;
-            width: 150px;
-            margin-right: 10px;
-        }
-        input[type="text"],
-        input[type="email"],
-        input[type="password"],
-        input[type="submit"] {
-            padding: 5px;
-            margin-bottom: 10px;
-        }
-    </style>
+    <title>Gestion des Coachs et Consultations</title>
 </head>
 <body>
-    <h1>Gestion des Coaches et des Clients</h1>
-
-    <!-- Formulaire pour se connecter -->
+    <h1>Connexion</h1>
     <form method="post" action="script.php">
-        <h2>Connexion Admin</h2>
         <label for="Email">Email:</label>
-        <input type="email" name="Email" required><br>
+        <input type="email" id="Email" name="Email" required><br>
         <label for="mdp">Mot de passe:</label>
-        <input type="password" name="mdp" required><br>
+        <input type="password" id="mdp" name="mdp" required><br>
         <input type="submit" name="connexion" value="Connexion">
     </form>
-
-    <!-- Formulaire pour créer un coach -->
+    
+    <h1>Création de compte client</h1>
     <form method="post" action="script.php">
-        <h2>Créer un Coach</h2>
-        <label for="NomCoach">Nom:</label>
-        <input type="text" name="NomCoach" required><br>
-        <label for="PrenomCoach">Prénom:</label>
-        <input type="text" name="PrenomCoach" required><br>
-        <label for="EmailCoach">Email:</label>
-        <input type="email" name="EmailCoach" required><br>
-        <label for="Specialite">Spécialité:</label>
-        <input type="text" name="Specialite" required><br>
-        <input type="submit" name="create_coach" value="Créer">
+        <label for="Nom">Nom:</label>
+        <input type="text" id="Nom" name="Nom" required><br>
+        <label for="Prénom">Prénom:</label>
+        <input type="text" id="Prénom" name="Prénom" required><br>
+        <label for="Email">Email:</label>
+        <input type="email" id="Email" name="Email" required><br>
+        <label for="Carte">Carte étudiante:</label>
+        <input type="text" id="Carte" name="Carte" required><br>
+        <label for="Paiement">Mode de paiement:</label>
+        <input type="text" id="Paiement" name="Paiement" required><br>
+        <label for="Adresse">Adresse:</label>
+        <input type="text" id="Adresse" name="Adresse" required><br>
+        <label for="mdp">Mot de passe:</label>
+        <input type="password" id="mdp" name="mdp" required><br>
+        <label for="tel">Téléphone:</label>
+        <input type="text" id="tel" name="tel" required><br>
+        <input type="submit" name="creation" value="Créer un compte">
     </form>
 
-    <!-- Formulaire pour supprimer un coach -->
+    <h1>Création de coach</h1>
+    <form method="post" action="script.php" enctype="multipart/form-data">
+        <label for="NomCoach">Nom:</label>
+        <input type="text" id="NomCoach" name="NomCoach" required><br>
+        <label for="PrenomCoach">Prénom:</label>
+        <input type="text" id="PrenomCoach" name="PrenomCoach" required><br>
+        <label for="EmailCoach">Email:</label>
+        <input type="email" id="EmailCoach" name="EmailCoach" required><br>
+        <label for="Specialite">Spécialité:</label>
+        <input type="text" id="Specialite" name="Specialite" required><br>
+        <label for="PhotoCoach">Photo:</label>
+        <input type="file" id="PhotoCoach" name="PhotoCoach" required><br>
+        <input type="submit" name="create_coach" value="Créer un coach">
+    </form>
+
+    <h1>Suppression de coach</h1>
     <form method="post" action="script.php">
-        <h2>Supprimer un Coach</h2>
-        <label for="ID_Coach">ID du Coach:</label>
-        <input type="text" name="ID_Coach" required><br>
-        <input type="submit" name="delete_coach" value="Supprimer">
+        <label for="ID_Coach">ID du coach:</label>
+        <input type="text" id="ID_Coach" name="ID_Coach" required><br>
+        <input type="submit" name="delete_coach" value="Supprimer un coach">
     </form>
 </body>
 </html>
