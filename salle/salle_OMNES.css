@@ -110,6 +110,19 @@ body {
     width: 100%;
 }
 
+/* Styles pour les grands écrans de 2K*/
+@media (min-width: 2024px) {
+    .card {
+        border: 2px solid #ccc;
+        border-radius: 15px;
+        overflow: hidden;
+        height: 90%;
+        box-shadow: 20px 20px 20px rgba(21, 42, 112, 0.8);
+        max-width: 1000px;
+        width: 100%;
+    }
+}
+
 .card-image img {
     width: 100%;
     height: 100%;
@@ -138,6 +151,13 @@ body {
     font-size: 50px;
 }
 
+/* Styles pour les grands écrans de 2K*/
+@media (min-width: 2024px) {
+    .card-content h1 {
+        font-size: 60px;
+    }
+}
+
 .box_coordonne {
     width: 70%;
     justify-content: center;
@@ -162,7 +182,6 @@ body {
 .coordonne p{
     font-size: 4vh;
 }
-
 
 
 .service-button {
@@ -231,6 +250,16 @@ body {
     font-weight: bolder;
 }
 
+/* Styles pour les grands écrans de 2K*/
+@media (min-width: 2024px) {
+    .dropdown-content .categorie h3 {
+        margin-top: 0;
+        font-size: 23px;
+        color: black;
+        font-weight: bolder;
+    }
+}
+
 .dropdown-content .categorie h3 a{
     color: inherit;
     text-decoration: none;
@@ -238,4 +267,37 @@ body {
 
 .dropdown-content .categorie:hover {
     background-color: rgba(61, 113, 180, 0.8)
+}
+
+
+
+section {
+    background: black;
+    padding: 12vh;
+    text-align: center;
+}
+
+.texte_image {
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.texte_image h3{
+    color: #2b74d4;
+    padding: 3vh;
+    font-size: 60px;
+    box-shadow: 10px 10px 10px rgba(9, 85, 28, 0.8);
+}
+.texte_image p {
+    margin: 10px 0;
+    color: #ffffff;
+    padding-top: 4vh;
+}
+
+.texte_image ul {
+    list-style-type: none;
+    padding-left: 0;
 }

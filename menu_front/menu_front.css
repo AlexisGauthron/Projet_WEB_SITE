@@ -65,3 +65,98 @@ body {
 .navbar-collapse {  
     justify-content: flex-end;
 }
+
+.main {
+    background-color: black;
+    z-index: -1;
+    margin: 0;
+    height: 450%;
+}
+
+
+.block_compte {
+    color: #ffffff;
+    text-align: center;
+    align-items: center;
+    padding: 10%;
+    padding-bottom: 4%;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.block_compte h1 {
+    font-size: 10vh;
+    text-shadow: 10px 10px 30px rgba(255, 255, 255, 0.8);
+}
+
+
+/*  Partie de la mise en forme des images  */
+
+
+.ligne {
+    width: 100%;
+    padding: 5%;
+    padding-top: 2%;
+    height: 73vh;
+    display: flex;
+    align-items: center;
+}
+
+.card {
+    border: 2px solid #ccc;
+        border-radius: 15px;
+        overflow: hidden;
+        height: 90%;
+        box-shadow: 20px 20px 20px rgba(255, 255, 255, 0.8);
+        max-width: 350px;
+        width: 100%;
+        margin: 4vh;
+        align-items: center;
+}
+
+
+/* Styles pour les grands écrans de 2K*/
+@media (min-width: 2024px) {
+    .card {
+        border: 2px solid #ccc;
+        border-radius: 15px;
+        overflow: hidden;
+        height: 90%;
+        box-shadow: 20px 20px 20px rgba(255, 255, 255, 0.8);
+        max-width: 650px;
+        width: 100%;
+        margin: 4vh;
+        align-items: center;
+    }
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.texte_p {
+    text-align: center;
+    position: relative;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(255, 255, 255);
+    margin-top: 15vh;
+    text-shadow: 20px 20px 20px rgba(0, 0, 0, 0.8);
+}
+
+.texte_p h2 {
+    font-size: 5vh;
+}
+
+.card-image a:hover {
+    color: white;
+}
+
+.card-image a {
+    color: inherit;
+}
