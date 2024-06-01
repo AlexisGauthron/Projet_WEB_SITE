@@ -1,0 +1,134 @@
+body {
+    margin : 0;
+    padding : 0;
+    background-color: black;
+    height: 100vh;
+}
+
+.tableau {
+    width: 75%;
+    margin: auto;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 5px 5px 40px white;
+}
+
+td {
+    font-size: 3vh;
+    text-align: center;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 3%;
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 10px solid black;
+}
+
+td.center {
+    text-align: center;
+}
+
+
+#delete {
+    padding-left: 50px;
+}
+
+.auto-typing {
+    text-shadow: 10px 10px 30px white;
+}
+
+.gradient {
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(45deg,#e26732, #61e23d);
+    color: white;
+}
+
+.connect {
+    background-color: black;
+}
+
+.connect input{
+    color: white;
+    size: 60;
+    text-shadow: 10px 10px 30px white;
+}
+
+.connect input:hover{
+    color: black;
+    font-weight: bolder;
+}
+
+.espace {
+    height: 8vh;
+}
+
+.container_titre {
+    position: relative;
+    justify-content: center;
+    padding-top: 2%;
+    height: auto;
+    width: 100%;
+    background-color: black;
+}
+
+.container_titre h1 {
+    color: #ffffff;
+    font-size: 13vh;
+    text-align: center;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+    z-index: 1;
+    text-shadow: 10px 10px 30px white;
+}
+
+.container_titre h2 {
+    color: #ffffff;
+    font-size: 9vh;
+    text-align: center;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+    z-index: 1;
+    text-shadow: 10px 10px 30px white;
+}
+
+.auto-typing {
+    text-shadow: 10px 10px 30px white;
+} 
+
+.navbar {
+    background: linear-gradient(to right, #e26732, #61e23d);
+}
+   
+.nav-link, .navbar-brand {
+    color: white;
+    font-size: 120%;
+    font-weight:bolder;
+    cursor: pointer;
+}
+   
+.nav-link {
+    margin-right: 1em !important;
+}
+   
+.nav-link:hover {
+    color: #1d3d9c;
+}
+   
+.navbar-collapse {  
+    justify-content: flex-end;
+}
+
+.client {
+    background-color: black;
+    z-index: -1;
+    margin: 0;
+    height: 300%;
+}
+
+.administrateur {
+    background-color: black;
+    z-index: -1;
+    margin: 0;
+    height: 100%;
+}
