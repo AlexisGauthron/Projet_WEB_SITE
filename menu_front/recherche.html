@@ -33,7 +33,7 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
         let typed = new Typed('.auto-typing', {
-            strings: ['<i><b>Que Rechercher-vous ?<b><i>'],
+            strings: ['<i><b>Que Recherchez-vous ?<b><i>'],
             typeSpeed: 150,
             backSpeed: 2000,
             onComplete: (self) => {
@@ -41,6 +41,11 @@
             }
         });
     </script>
+
+    <form action="recherche.php" method="post">
+        <input type="text" name="requete" size="40">
+        <input type="submit" name="boutton" value="Rechercher">
+    </form>
 </body>
 </html>
 
