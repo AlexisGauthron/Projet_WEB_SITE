@@ -214,7 +214,6 @@
 	}
 
 	function planning (){
-		//alert("cliqué");
 		let semainedoc = document.getElementById("semaine");
 		let actuelle = "Semaine du ";
 		actuelle = actuelle+ semaine(0);
@@ -243,8 +242,6 @@
 						val = val+'0';
 					}
 					valseconde = val+":00";
-					//alert(val);
-					//alert ("test"+ heuresFromPHP[j]+val);
 					for (let l = 0; l<taille;l++){
 
 						if (heuresFromPHP[l]==valseconde && datesFromPHP[l] == aujourdhui){
@@ -269,10 +266,6 @@
 			colonne.innerHTML =  text;
 		}
 	}
-
-	/*window.onload = function() {
-            planning();
-        };*/
 	
 	document.addEventListener("DOMContentLoaded", function() {
 		planning();
@@ -298,16 +291,16 @@
             inputheure.name = 'heure';
             inputheure.value = heure;
 
-            var inputFormId = document.createElement('input');
-    		inputFormId.type = 'hidden';
-		    inputFormId.name = 'form_id';
-		    inputFormId.value = 1;
+            var inputcoach = document.createElement('input');
+    		inputcoach.type = 'hidden';
+		    inputcoach.name = 'id_coach';
+		    inputcoach.value = idcoach;
 
             
             form.appendChild(inputid);
             form.appendChild(inputdates);
             form.appendChild(inputheure);
-            form.appendChild(inputFormId);
+            form.appendChild(inputcoach);
 
             document.body.appendChild(form);
             form.submit();
@@ -364,11 +357,18 @@
  		$database = "Projet";
 		$db_handle = mysqli_connect('localhost', 'root', 'root');
 		$db_found = mysqli_select_db($db_handle, $database);
-
+		$idcoach = isset($_POST["idcoach"])? $_POST["idcoach"] : "";
+		$idcoach = intval($idcoach);
+		//$specialite = isset($_POST["specialite"])? $_POST["specialite"] : "";
+		//$idcoach = 1;
 		if ($db_found) {
-	        $sql = "SELECT Date,Heure FROM Coach,Consultation WHERE NomCoach = 'Dupont' AND PrénomCoach = 'Gabrielle'AND EmailCoach = 'ga@gmail.com' AND ID_Coach = IDcoach";
+			if(isset($_POST['RDV'])) { 
+			//$sql = "SELECT ID_Coach FROM Consultation WHERE Specialité = $specialite";
+			//$idcoach = mysqli_query($db_handle, $sql);
+	        //$sql = "SELECT Date,Heure FROM Coach,Consultation WHERE NomCoach = 'Dupont' AND PrénomCoach = 'Gabrielle'AND EmailCoach = 'ga@gmail.com' AND ID_Coach = IDcoach";
+	        $sql = "SELECT Date,Heure FROM Coach,Consultation WHERE ID_Coach = $idcoach AND ID_Coach = IDcoach";
+	        echo "$sql";
 	        $result = mysqli_query($db_handle, $sql);
-	        //$data = mysqli_fetch_assoc($result);
 	        $nbresult = mysqli_num_rows($result);
 			$dates =array();
 			$heures = array();
@@ -376,36 +376,23 @@
 				$data = mysqli_fetch_assoc($result);
 				$dates[$i] = $data['Date'];
 				$heures[$i] = $data['Heure'];
-				//$jsonDates[$i] = json_encode($dates[$i]);
-	        	//$jsonHeures[$i] = json_encode($heures[$i]);
 			}
+			$nbresult = json_encode($nbresult);
 			$jsonDates = json_encode($dates);
 	        $jsonHeures = json_encode($heures);
 	        $aujourdhui = date("Y-m-d");   
 	        $jsonaujourdhui = json_encode($aujourdhui);
 	        $jour = date('w',strtotime($aujourdhui));
 	        $jsonJour = json_encode ($jour);
-            /*while ($data = mysqli_fetch_assoc($result)) {
-                $dates[] = $data['Date'];
-                $heures[] = $data['Heure'];
-            }
-            $jsonDates = json_encode($dates);
-    		$jsonHeures = json_encode($heures);*/
+	        $jsoncoach = json_encode($idcoach);
+	    }
     	} else {
         	$jsonData = json_encode("Database not found");
     	}
 
+
 	?>
 	<script>
-		/*var taille = <?php echo $nbresult;?>;
-		var datesFromPHP[taille];
-		var heuresFromPHP[taille];
-		for (let i = 0;i<taille;i++){
-			datesFromPHP[i] = <?php echo $jsonDates[$i]; ?>;
-			heuresFromPHP[i] = <?php echo $jsonHeures[$i]; ?>;
-		}*/
-        //var datesFromPHP[taille] = <?php echo $jsonDates; ?>;
-		//var heuresFromPHP[taille] = <?php echo $jsonHeures; ?>;
 		var taille = <?php echo $nbresult;?>;
 		var datesFromPHP = <?php echo $jsonDates; ?>;
 		var heuresFromPHP = <?php echo $jsonHeures; ?>;
@@ -415,6 +402,7 @@
 			jour = 7;
 		}
 		jour -=1;
+		var idcoach =  <?php echo $jsoncoach;?>;
     </script>
 </body>
 </html>
