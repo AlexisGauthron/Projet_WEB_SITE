@@ -6,16 +6,21 @@
     <title>Communication avec le coach</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("YOUR_USER_ID"); // Remplacez par votre user ID EmailJS
+        })();
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>Communiquer avec le coach</h1>
-        <button id="contact-button">Communiquer avec le coach</button>
+        <button id="contact-button" class="btn">Afficher les options de communication</button>
         <div id="options" class="hidden">
-            <button id="text-chat">Texto</button>
-            <button id="audio-call">Appel Audio</button>
-            <button id="video-call">Appel Vidéo</button>
-            <button id="email">Courriel</button>
+            <button id="text-chat" class="btn">Texto</button>
+            <button id="audio-call" class="btn">Appel Audio</button>
+            <button id="video-call" class="btn">Appel Vidéo</button>
+            <button id="email-button" class="btn">Courriel</button>
         </div>
         <div id="communication-area"></div>
     </div>

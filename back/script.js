@@ -1,12 +1,5 @@
 document.getElementById('contact-button').addEventListener('click', function() {
-    fetch('http://localhost:8888/communication_app/index.php?action=get_coach')
-        .then(response => response.json())
-        .then(data => {
-            const coach = data[0]; // Supposons qu'il y a un seul coach
-            document.getElementById('options').classList.toggle('hidden');
-            // Afficher les informations du coach si nécessaire
-        })
-        .catch(error => console.error('Error:', error));
+    document.getElementById('options').classList.toggle('hidden');
 });
 
 document.getElementById('text-chat').addEventListener('click', function() {
@@ -21,14 +14,34 @@ document.getElementById('video-call').addEventListener('click', function() {
     startVideoCall();
 });
 
-document.getElementById('email').addEventListener('click', function() {
+document.getElementById('email-button').addEventListener('click', function() {
     sendEmail();
 });
 
 function startTextChat() {
     const communicationArea = document.getElementById('communication-area');
-    communicationArea.innerHTML = '<p>Début de la session de chat texte...</p>';
-    // Implémenter la logique de chat texte ici
+    communicationArea.innerHTML = `
+        <div class="chat-box">
+            <div class="chat-messages" id="chat-messages"></div>
+            <div class="chat-input">
+                <input type="text" id="chat-input" placeholder="Écrivez votre message ici...">
+                <button onclick="sendMessage()">Envoyer</button>
+            </div>
+        </div>
+    `;
+}
+
+function sendMessage() {
+    const chatInput = document.getElementById('chat-input');
+    const chatMessages = document.getElementById('chat-messages');
+    const message = chatInput.value;
+
+    if (message.trim() !== "") {
+        const messageElement = document.createElement('p');
+        messageElement.textContent = message;
+        chatMessages.appendChild(messageElement);
+        chatInput.value = "";
+    }
 }
 
 function startAudioCall() {
@@ -64,27 +77,8 @@ function startVideoCall() {
 }
 
 function sendEmail() {
-    const communicationArea = document.getElementById('communication-area');
-    const emailContent = {
-        from_name: 'Utilisateur',
-        from_email: 'utilisateur@example.com',
-        message: 'Message automatique de contact avec le coach.'
-    };
-
-    fetch('http://localhost:8888/communication_app/index.php?action=send_email', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(emailContent),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        communicationArea.innerHTML += '<p>Email envoyé avec succès!</p>';
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        communicationArea.innerHTML += '<p>Échec de l\'envoi de l\'email.</p>';
-    });
+            var recipient = "coach@salle-omnes.com";
+            var subject = "Prise de rendez-vous sportive ! ";
+            var body = "Cher coach,%0D%0A%0D%0AJe vous contacte au sujet de notre prochain entrainement.%0D%0A%0D%0ACordialement,%0D%0AAlexia Kairouz";
+            window.location.href = "mailto:" + recipient + "?subject=" + subject + "&body=" + body;
 }
