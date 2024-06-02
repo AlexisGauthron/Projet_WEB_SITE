@@ -1,0 +1,139 @@
+.container_titre {
+    position: relative;
+    justify-content: center;
+    padding-top: 17%;
+    height: 100vh;
+    width: 100%;
+}
+.container_titre h1 {
+    color: #ffffff;
+    font-size: 70px;
+    text-align: center;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+    z-index: 1000;
+
+}
+.planning {
+    background-image: url("../image/planning.webp");
+    background-size: cover;
+
+}
+
+.auto-typing {
+text-shadow: 10px 10px 30px white;
+} 
+
+.navbar {
+    background: linear-gradient(to right, #e26732, #61e23d);
+}
+
+.nav-link, .navbar-brand {
+    color: white;
+    font-size: 120%;
+    font-weight:bolder;
+    cursor: pointer;
+}
+
+.nav-link {
+    margin-right: 1em !important;
+}
+
+.nav-link:hover {
+    color: #1d3d9c;
+}
+
+.navbar-collapse {  
+    justify-content: flex-end;
+}
+
+h1{
+    text-align: center;
+    color: white;
+    background-color: black;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+#container {
+    width: 500px;
+    height: 655px;
+    margin: auto;
+    background-color: #cccccc;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#gameGrid {
+    width: 480px;
+    height: 480px;
+    background-color: #ccccdd;
+    border : 1px dashed green;
+    margin-top: 3%;
+    margin: auto;
+}
+
+#gameInfo{
+    width: 480px;
+    height: 150px;
+    margin: auto;
+    background-color: #666699;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-top: 2%;
+}
+
+.case{
+    width: 90px;
+    height: 30px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.green{
+    /*background-color: #55cc55;*/
+    background-color:#702c67;
+    opacity: 0.9;
+}
+
+.green:hover{
+    opacity: 0.4;
+}
+
+.red{
+    background-color: #cc5555;
+
+}
+
+.blue{
+    background-color: #5555cc;
+
+}
+
+#info {
+    margin-top:3% ;
+    font-size: 25px;
+    height: 30px;
+    color: black;
+    background-color: #aaccbb;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#score{
+    margin-top: 3%;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+}
+
+#reset{
+    height: 40px;
+    width: 250px;
+    background-color: #aabbaa;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-top: 3%;
+    margin: auto;
+    display: block;
+}
