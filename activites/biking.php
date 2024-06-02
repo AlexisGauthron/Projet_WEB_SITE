@@ -43,6 +43,7 @@
       <div class="container">
         <div class="row">
             <?php
+            
             while ($row = mysqli_fetch_assoc($result)) {
                 echo '<div class="col-md-4">';
                 echo '<div class="card mb-4">';
@@ -65,7 +66,7 @@
         <button>Voir son CV</button>
     </div>
 
-    
+
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
         let typed = new Typed('.auto-typing', {

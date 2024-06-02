@@ -1,3 +1,11 @@
+<?php 
+    $database = "Projet";
+    $db_handle = mysqli_connect('localhost', 'root', 'root');
+    $db_found = mysqli_select_db($db_handle, $database);
+    $sql = "SELECT ID_Coach,PrénomCoach, NomCoach, Photo, EmailCoach FROM Coach WHERE Specialité = 'Cardio'";
+    $result = mysqli_query($db_handle, $sql);
+?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -32,6 +40,31 @@
     </header>
 
 
+    <div class="container">
+        <div class="row">
+            <?php
+            
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo '<div class="col-md-4">';
+                echo '<div class="card mb-4">';
+                echo '<img class="card-img-top" src="images/' . $row['Photo'] . '" alt="Photo de ' . $row['PrénomCoach'] . ' ' . $row['NomCoach'] . '">';
+                echo '<div class="card-body">';
+                echo '<h5 class="card-title">' . $row['PrénomCoach'] . ' ' . $row['NomCoach'] . '</h5>';
+                echo '<p class="card-text">Email: ' . $row['EmailCoach'] . '</p>';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+                echo '<form method="post" action ="../back/planning.php">';
+                echo '<input type="hidden" name="idcoach" value="' . $row['ID_Coach'] . '">';
+                echo '<input type="submit" name="RDV" value="Prendre un RDV">';
+                echo '</form>';
+            }
+            ?>
+        </div>
+        
+        <button>Communiquer avec le coach</button>
+        <button>Voir son CV</button>
+    </div>
 
     
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
