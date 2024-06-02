@@ -29,8 +29,14 @@
 
 		//echo "$id $date $heure";
 		echo "$sql";
-
-		header('Location: planning.php');
+		
+		echo '<form id="autoSubmitForm" method="post" action="planning.php">';
+    echo '<input type="hidden" name="idcoach" value="' . htmlspecialchars($idcoach) . '">';
+    echo '</form>';
+    echo '<script type="text/javascript">
+            document.getElementById("autoSubmitForm").submit();
+          </script>';
+         //header('Location: planning.php');
 		exit();
 
 	}

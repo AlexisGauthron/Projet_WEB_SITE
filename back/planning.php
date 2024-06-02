@@ -188,13 +188,9 @@
 			moislettre = "Décembre";
 		}
 
-		
-		//let semaine = document.getElementById("semaine");
-		//let actuelle = "Semaine du ";
-		//actuelle = actuelle + aujourdhui+ " Lundi "+jourdebut +" "+moislettre ;
-		let actuelle = aujourdhui+ " Lundi "+jourdebut +" "+moislettre ;
-		//semaine.innerHTML = actuelle;
-		//alert(moischiffre[0]);
+	
+		let actuelle = " Lundi "+jourdebut +" "+moislettre ;
+
 		moischiffre = String(moischiffre);
 		ajoutzero = tailleoriginale - moischiffre.length;
 		while (ajoutzero>0){
@@ -209,7 +205,7 @@
 			ajoutzero--;
 		}
 		aujourdhui = aujourdhui[0]+aujourdhui[1]+aujourdhui[2]+aujourdhui[3]+aujourdhui[4]+moischiffre+aujourdhui[7]+jourdebut;
-		actuelle+=aujourdhui;
+	
 		return actuelle;
 	}
 
@@ -247,18 +243,13 @@
 						if (heuresFromPHP[l]==valseconde && datesFromPHP[l] == aujourdhui){
 							text = text+' <input type="hidden" id ="'+val+'"class="case red" value ='+val+' >';
 							text += '<button type="button" id ="'+val+'" class="case red">'+val+'</button>';
-							//text = text+ '<input type="button" id ="'+val+'"class="case red" value ='+val+' > ';
 
 							passe = 1;
 						}
 						
 					}
 					if (passe==0){
-						//text = text+ '<input type="button" id ="'+val+'"class="case green" value ='+val+' onclick="plan(id)"> ';
-						/*text = text+'<form action="rdv.php" method="POST"> <input type="hidden" id ="'+val+'"class="case red" value ='+val+' >';
-							text += '<button type="submit" id ="'+val+'" class="case green">'+val+'</button>';*/
 						text += '<input type="button" id ="' + val + '" class="case green" value ="' + val + '" onclick="envoyerform(\'' + val + '\', \'' + aujourdhui + '\', \'' + valseconde + '\')">';
-						//text = text+ '<input type="button" id ="'+val+'"class="case green" value ='+val+' onclick="envoyerform(id,'+aujourdhui+','+valseconde+')"> ';
 					}
 				}
 
@@ -271,7 +262,6 @@
 		planning();
 	});
 	function envoyerform(id,dates,heure){
-		//alert (id+dates+heure);
 		var form = document.createElement('form');
             form.method = 'POST';
             form.action = 'rdv.php';
@@ -308,13 +298,11 @@
 
 	function prece (){
         jour =13;
-        //alert(jour);
 
         planning();
 	}
 	function suiv (){
         jour =-1;
-        //alert(jour);
 
         planning();
 	}
@@ -359,15 +347,8 @@
 		$db_found = mysqli_select_db($db_handle, $database);
 		$idcoach = isset($_POST["idcoach"])? $_POST["idcoach"] : "";
 		$idcoach = intval($idcoach);
-		//$specialite = isset($_POST["specialite"])? $_POST["specialite"] : "";
-		//$idcoach = 1;
 		if ($db_found) {
-			if(isset($_POST['RDV'])) { 
-			//$sql = "SELECT ID_Coach FROM Consultation WHERE Specialité = $specialite";
-			//$idcoach = mysqli_query($db_handle, $sql);
-	        //$sql = "SELECT Date,Heure FROM Coach,Consultation WHERE NomCoach = 'Dupont' AND PrénomCoach = 'Gabrielle'AND EmailCoach = 'ga@gmail.com' AND ID_Coach = IDcoach";
 	        $sql = "SELECT Date,Heure FROM Coach,Consultation WHERE ID_Coach = $idcoach AND ID_Coach = IDcoach";
-	        echo "$sql";
 	        $result = mysqli_query($db_handle, $sql);
 	        $nbresult = mysqli_num_rows($result);
 			$dates =array();
@@ -386,7 +367,7 @@
 	        $jsonJour = json_encode ($jour);
 	        $jsoncoach = json_encode($idcoach);
 	    }
-    	} else {
+    	else {
         	$jsonData = json_encode("Database not found");
     	}
 
