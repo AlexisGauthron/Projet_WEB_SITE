@@ -132,3 +132,10 @@ td.center {
     margin: 0;
     height: 100%;
 }
+
+.coach {
+    background-color: black;
+    z-index: -1;
+    margin: 0;
+    height: 300%;
+}

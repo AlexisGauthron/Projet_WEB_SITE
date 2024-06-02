@@ -40,7 +40,7 @@ body {
 }
 
 .auto-typing_n {
-    text-shadow: 10px 10px 30px rgb(0, 0, 0, 0.8);
+    text-shadow: 10px 10px 30px rgba(255, 255, 255, 0.8);
 }  
 
 .navbar {
