@@ -23,6 +23,7 @@ if (isset($_POST['admin_connexion'])) {
         exit();
     } else {
         echo "<p>Identifiants incorrects.</p>";
+        exit();
     }
 }
 
