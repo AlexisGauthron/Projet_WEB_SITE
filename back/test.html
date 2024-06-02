@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<title>Morpion</title>
+	<style>
+
+	h1{
+		text-align: center;
+		color: white;
+		background-color: black;
+		padding: 5px;
+		border-radius: 15px;
+	}
+
+	#container {
+		width: 500px;
+		height: 655px;
+		margin: auto;
+		background-color: #cccccc;
+		border: 1px solid black;
+		border-radius: 5px;
+	}
+
+	#gameGrid {
+		width: 480px;
+		height: 480px;
+		background-color: #ccccdd;
+		border : 1px dashed green;
+		margin-top: 3%;
+		margin: auto;
+	}
+
+	#gameInfo{
+		width: 480px;
+		height: 150px;
+		margin: auto;
+		background-color: #666699;
+		border: 1px solid black;
+		border-radius: 4px;
+		margin-top: 2%;
+	}
+
+	.case{
+		width: 90px;
+		height: 30px;
+		margin-left: 5px;
+		margin-top: 5px;
+	}
+
+	.green{
+		/*background-color: #55cc55;*/
+		background-color:#702c67;
+		opacity: 0.9;
+	}
+
+	.green:hover{
+		opacity: 0.4;
+	}
+
+	.red{
+		background-color: #cc5555;
+	}
+	 
+	.blue{
+		background-color: #5555cc;
+	}
+
+	#info {
+		margin-top:3% ;
+		font-size: 25px;
+		height: 30px;
+		color: black;
+		background-color: #aaccbb;
+		text-align: center;
+		border-radius: 5px;
+	}
+
+	#score{
+		margin-top: 3%;
+		font-size: 25px;
+		color: white;
+		text-align: center;
+	}
+
+	#reset{
+		height: 40px;
+		width: 250px;
+		background-color: #aabbaa;
+		border-radius: 5px;
+		font-size: 20px;
+		margin-top: 3%;
+		margin: auto;
+		display: block;
+	}
+	</style>
+	<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function() {	
+	function plan(id){
+		alert (id);
+	}
+
+	function planning (){
+		//alert("cliqué");
+		for (let i = 0;i<3;i++){
+			var colonne = "colonne"+i;
+			//alert(colonne);
+			var colonne = document.getElementById(colonne);
+			var text ="";
+			var val ="";
+			for (let j = 9;j<12;j++){
+				
+				for (let k = 0;k<60;k+=20){
+					var rajout ="";
+					if (j==9){
+						rajout = "0";
+					}
+					val = rajout+ j+":"+k;
+					if (k==0){
+						val = val+'0';
+					}
+					text = text+ '<input type="button" id ="'+val+'"class="case green" value ='+val+' onclick="plan(id)"> ';
+					//alert(text);
+					
+
+				}
+			}
+			colonne.innerHTML =  text;
+		}
+		console.log("Email du coach : " + dataFromPHP);
+        alert("Email du coach : " + dataFromPHP);
+	}
+	/*window.onload = function() {
+            planning();
+        };*/
+	planning();
+});
+	</script>
+</head>
+<body> 
+	<h1>Jeu de Morpion</h1>
+	<div id = "container0">
+		<div id = "gameGrid0">
+			<div id = "colonne0">
+
+			</div>
+			<div id = "colonne1">
+
+			</div>
+			<div id = "colonne2">
+
+			</div>
+		</div>
+		<div id = "gameInfo0">
+				
+			<div id = "info"><span id = "info">
+				Bonjour ! Cliquez sur la grille pour jouer.
+			</span></div>
+		</div>
+	</div>
+	</div>
+ 	<?php
+ 		ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
+ 		$database = "Projet";
+		$db_handle = mysqli_connect('localhost', 'root', 'root');
+		$db_found = mysqli_select_db($db_handle, $database);
+
+		if ($db_found) {
+	        $sql = "SELECT EmailCoach FROM Coach WHERE NomCoach = 'Dupont' AND PrénomCoach = 'Gabrielle'";
+	        $result = mysqli_query($db_handle, $sql);
+	        $data = mysqli_fetch_assoc($result);
+	        $jsonData = json_encode($data['EmailCoach']);
+    	} else {
+        	$jsonData = json_encode("Database not found");
+    	}
+
+
+	?>
+	<script>
+        // Transmission des données PHP vers le JavaScript
+        var dataFromPHP = <?php echo $jsonData; ?>;
+        dataFromPHP = "0";
+        // Exemple de vérification
+ 		console.log("Données récupérées: " + dataFromPHP);
+        alert("Données récupérées: " + dataFromPHP);
+    </script>
+</body>
+</html>
