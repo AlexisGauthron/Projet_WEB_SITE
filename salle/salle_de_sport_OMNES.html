@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
 </head>
 <body>
     <header class="salle_de_sport">
@@ -40,7 +39,7 @@
             <div class="card-content">
                 <div class="centrage">
                     <h1><i>Salle de Sport OMNES</i></h1>
-                    <div class="dropdown"><button class="service-button dropdown-link"><a  href="#">Nos services</a></button>
+                    <div class="dropdown"><button class="service-button dropdown-link">Nos services</button>
 
                         <div class="dropdown-content">
                             <div class="espace"></div>
@@ -82,10 +81,9 @@
             strings: ['Bienvenue à la <i><b>Salle de Sport OMNES<b><i>'],
             typeSpeed: 150,
             backSpeed: 150,
-            loop: true,
-            fadeOut: true,
-            fadeOutClass: 'typed-fade-out',
-            fadeOutDelay: 500
+            onComplete: (self) => {
+                document.querySelector('.typed-cursor').style.display = 'none';
+            }
         });
     </script>
 </body>

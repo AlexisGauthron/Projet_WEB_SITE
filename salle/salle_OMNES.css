@@ -214,6 +214,7 @@ body {
     padding: 5%;
 }
 
+
 .dropdown:hover .dropdown-content {
     display: flex; /* Use flex to align items horizontally */
 }

@@ -50,7 +50,7 @@
                     <a href="../back/coach.html">
                         <img src="image/coach.webp" alt="">
                         <div class= "texte_p">
-                            <h2><i> Coach </i></h2>
+                            <h2><i> Coach / Personnel de Sport</i></h2>
                         </div>
                     </a>
                 </div>
@@ -66,6 +66,7 @@
                 </div>
             </div>
     </main>
+
     
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
