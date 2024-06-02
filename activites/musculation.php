@@ -13,6 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musculation</title>
+    <link rel="stylesheet" href="../style_coach.css">
     <link rel="stylesheet" href="activite.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -41,29 +42,35 @@
     </header>
 
 
-    <div class="container">
-        <div class="row">
+    <main class ="main">
+        <div class= "ligne_coach">
             <?php
             while ($row = mysqli_fetch_assoc($result)) {
-                echo '<div class="col-md-4">';
-                echo '<div class="card mb-4">';
-                echo '<img class="card-img-top" src="images/' . $row['Photo'] . '" alt="Photo de ' . $row['PrénomCoach'] . ' ' . $row['NomCoach'] . '">';
-                echo '<div class="card-body">';
-                echo '<h5 class="card-title">' . $row['PrénomCoach'] . ' ' . $row['NomCoach'] . '</h5>';
-                echo '<p class="card-text">Email: ' . $row['EmailCoach'] . '</p>';
+                echo '<div class="carte blanc">';
+                    echo '<div class="entete">';
+                        echo '<div class="photo">';
+                            echo '<img class="photo_coach" src="images/' . $row['Photo'] . '" alt="Photo de ' . $row['PrénomCoach'] . ' ' . $row['NomCoach'] . '">';
+                        echo '</div>';
+                        echo '<div class="infos-coach">';
+                            echo '<h1 class="card-title">' . $row['PrénomCoach'] . ' ' . $row['NomCoach'] . '</h1>';
+                            echo '<h2 class="card-text">Email: ' . $row['EmailCoach'] . '</h2>';
+                        echo '</div>';
+                    echo '</div>';
+                
+                    echo '<div class="boutons">';
+                        echo '<div class="service-button">';
+                            echo '<form class="form-reset" method="post" action="../back/planning.php">';
+                                echo '<input type="hidden" name="idcoach" value="' . $row['ID_Coach'] . '">';
+                                echo '<input type="submit" name="RDV" value="Prendre un RDV">';
+                            echo '</form>';
+                        echo '</div>';
+                        echo '<button class="service-button">Communiquer avec le coach</button>';
+                        echo '<button class="service-button">Voir son CV</button>';
+                    echo '</div>';
                 echo '</div>';
-                echo '</div>';
-                echo '</div>';
-                echo '<form method="post" action ="../back/planning.php">';
-                echo '<input type="hidden" name="idcoach" value="' . $row['ID_Coach'] . '">';
-                echo '<input type="submit" name="RDV" value="Prendre un RDV">';
-                echo '</form>';
-            }
+                }
             ?>
         </div>
-        
-        <button>Communiquer avec le coach</button>
-        <button>Voir son CV</button>
     </div>
 
     
