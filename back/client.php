@@ -2,7 +2,6 @@
 echo '<meta charset="utf-8">';
 
 function affichage($db_handle, $email){
-
 			$sql = "SELECT ID_Consultation,Date,Heure,Commentaire,NomCoach,PrénomCoach,Specialité FROM Consultation,Client,Coach WHERE IDclient = ID_Client AND EmailClient = '$email' AND IDcoach = ID_Coach;";
 			//echo"$sql";
 			$result = mysqli_query($db_handle,$sql);
@@ -34,6 +33,29 @@ function affichage($db_handle, $email){
 			}else echo "<p>Vous n'avez pas de consultation passées ou prévues.</p>";
 }
 
+function connexion($db_handle,$email1,$mdp1) {
+	$sql = "SELECT Mot_de_passe FROM Client WHERE EmailClient ='$email1' ";
+		//echo "$sql";
+		$result = mysqli_query($db_handle,$sql);
+		$mot = mysqli_fetch_assoc($result);
+		if ( $mot ==0){
+			echo "Pas de compte avec cette adresse mail créez un compte ou réessayez";
+			$erreur = true;
+		}else{
+			echo $mot['Mot_de_passe'];
+			if ($mot['Mot_de_passe'] == $mdp1){
+				echo "bon mdp";
+			}else {
+				echo "pas bon mdp";
+				$erreur = true;
+			}
+		}
+		if ($erreur == false){
+			//echo " Bonjour ".$prenom." !";
+			affichage($db_handle, $email1);
+		}
+}
+
 $database = "Projet";
 $db_handle = mysqli_connect('localhost', 'root', 'root');
 $db_found = mysqli_select_db($db_handle, $database);
@@ -41,11 +63,13 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 $nom = isset($_POST["Nom"])? $_POST["Nom"] : "";
 $prenom = isset($_POST["Prénom"])? $_POST["Prénom"] : "";
-$email = isset($_POST["Email"])? $_POST["Email"] : "";
+$email2 = isset($_POST["Email1"])? $_POST["Email1"] : "";
+$email1 = isset($_POST["Email2"])? $_POST["Email2"] : "";
 $carte = isset($_POST["Carte"])? $_POST["Carte"] : "";
 $paiement = isset($_POST["Paiement"])? $_POST["Paiement"] : "";
 $adresse = isset($_POST["Adresse"])? $_POST["Adresse"] : "";
-$mdp = isset($_POST["mdp"])? $_POST["mdp"] : "";
+$mdp2 = isset($_POST["mdp1"])? $_POST["mdp1"] : "";
+$mdp1 = isset($_POST["mdp2"])? $_POST["mdp2"] : "";
 $tel = isset($_POST["tel"])? $_POST["tel"] : "";
 
 
@@ -58,33 +82,12 @@ $errorMessage = "";
 if ($db_found) {
 	$erreur = false;
 	if(isset($_POST['connexion'])) { 
-		$sql = "SELECT Mot_de_passe FROM Client WHERE EmailClient ='$email' ";
-		//echo "$sql";
-		$result = mysqli_query($db_handle,$sql);
-		if (mysqli_fetch_assoc($result) ==0){
-			echo "Pas de compte avec cette adresse mail créez un compte ou réessayez";
-			$erreur = true;
-		}else{
-			$mot = mysqli_fetch_assoc($result);
-
-			echo $mot['Mot_de_passe'];
-			if ($mot['Mot_de_passe'] == $mdp){
-				echo "bon mdp";
-			}else {
-				echo "pas bon mdp";
-				$erreur = true;
-			}
-		}
-		if ($erreur == false){
-			echo " Bonjour ".$prenom." !";
-			affichage($db_handle, $email);
-		}
+		connexion($db_handle,$email1,$mdp1);
 		
-
 	}
 	if(isset($_POST['creation'])) { 
-		if ($nom == "" || $prenom == "" || $email == "" ||$carte == "" || $paiement == ""|| $adresse == ""||$mdp ==""){
-			
+		if ($nom == "" || $prenom == "" || $email2 == "" ||$carte == "" || $paiement == ""|| $adresse == ""||$mdp2 ==""){
+			echo ("$nom $prenom $email $carte $paiement $adresse $mdp");
 			echo("<p>"."Une valeur est nulle"."</p>");
 
 		}else{
@@ -99,10 +102,10 @@ if ($db_found) {
     			$row = mysqli_fetch_assoc($result);
     			$id_max = $row['id_max'];
     			$id_max = $id_max +1;
-				$sql = "INSERT INTO Client(ID_Client,NomClient, PrénomClient, EmailClient, Carte_etudiante, Adresse,Téléphone, Mot_de_passe) VALUES($id_max,'$nom', '$prenom', '$email', '$carte', '$adresse','$tel','$mdp')";
+				$sql = "INSERT INTO Client(ID_Client,NomClient, PrénomClient, EmailClient, Carte_etudiante, Adresse,Téléphone, Mot_de_passe) VALUES($id_max,'$nom', '$prenom', '$email2', '$carte', '$adresse','$tel','$mdp2')";
 				//echo($sql);
 				$stmt = mysqli_prepare($db_handle, $sql);
-                mysqli_stmt_bind_param($stmt, 'sssssss', $nom, $prenom, $email, $carte, $adresse, $tel, $mdp);
+                mysqli_stmt_bind_param($stmt, 'sssssss', $nom, $prenom, $email2, $carte, $adresse, $tel, $mdp2);
                 
                 if (mysqli_stmt_execute($stmt)) {
                     echo "<p>Compte créé avec succès.</p>";
@@ -115,12 +118,12 @@ if ($db_found) {
 	}
 	if (isset($_POST['supprimer'])){
 
-		$email = isset($_POST["Email "])? $_POST["Email"] : "";
+		$email1 = isset($_POST["Email"])? $_POST["Email"] : "";
 		$consultation = isset($_POST["consultation"])? $_POST["consultation"] : "";
 		$sql = "DELETE FROM Consultation WHERE ID_Consultation = '$consultation' ";
 		$result = mysqli_query($db_handle, $sql);
 		echo "<p>Votre rendez-vous a bien été supprimé</p><p>Voici vos prohaines consultations</p>";
-		affichage($db_handle, $email);
+		affichage($db_handle, $email1);
 	}
 
 }
