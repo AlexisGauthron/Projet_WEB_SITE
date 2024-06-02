@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrousel</title>
+    <style>
+        body {
+            font-family: roboto, sans-serif;
+            text-align: center;
+			font-style: italic;
+        }
+        #carrousel {
+            position: relative;
+            width: 80%;
+            max-width: 700px;
+            margin: auto;
+            overflow: hidden;
+            perspective: 1000px;
+            transition: height 0.5s ease;
+        }
+        #carrousel ul {
+            display: flex;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            transition: transform 0.5s ease;
+        }
+        #carrousel li {
+            min-width: 100%;
+            transition: transform 0.5s ease;
+            position: relative;
+        }
+        #carrousel img {
+            width: 100%;
+            transform: scale(0.8);
+            transition: transform 0.5s ease;
+        }
+        #carrousel li.active img {
+            transform: scale(1);
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            color: rgb(188, 255, 130);
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+            user-select: none;
+            transform: translateY(-50%);
+        }
+        .next {
+            right: 10px;
+        }
+        .prev {
+            left: 10px;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        .dots {
+            display: flex;
+            justify-content: center;
+            padding-top: 10px;
+        }
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var $carrousel = $('#carrousel ul');
+            var $img = $('#carrousel li');
+            var indexImg = $img.length - 1;
+            var i = 0;
+            var interval;
+
+            function adjustHeight() {
+                var currentHeight = $img.eq(i).find('img').height();
+                $('#carrousel').css('height', currentHeight);
+            }
+
+            function showSlide(index) {
+                if (index > indexImg) {
+                    i = 0;
+                } else if (index < 0) {
+                    i = indexImg;
+                } else {
+                    i = index;
+                }
+                $img.removeClass('active');
+                $img.eq(i).addClass('active');
+                $carrousel.css('transform', 'translateX(' + (-i * 100) + '%)');
+                $('.dot').removeClass('active');
+                $('.dot').eq(i).addClass('active');
+                adjustHeight();
+            }
+
+            function startSlideShow() {
+                interval = setInterval(function() {
+                    showSlide(i + 1);
+                }, 4000);
+            }
+
+            function stopSlideShow() {
+                clearInterval(interval);
+            }
+
+            $('.next').click(function() {
+                stopSlideShow();
+                showSlide(i + 1);
+                startSlideShow();
+            });
+
+            $('.prev').click(function() {
+                stopSlideShow();
+                showSlide(i - 1);
+                startSlideShow();
+            });
+
+            $('.dot').click(function() {
+                stopSlideShow();
+                var index = $(this).index();
+                showSlide(index);
+                startSlideShow();
+            });
+
+            $('#carrousel').hover(stopSlideShow, startSlideShow);
+
+            $(window).on('load', function() {
+                adjustHeight();
+                startSlideShow();
+                showSlide(i);
+            });
+
+            $(window).on('resize', function() {
+                adjustHeight();
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Les événements de la semaine</h1>
+    <div id="carrousel">
+        <ul>
+            <li><img src="image/image1.png" alt="sport 1"></li>
+            <li><img src="image/image2.jpg" alt="sport 2"></li>
+            <li><img src="image/image3.jpg" alt="sport 3"></li>
+            <li><img src="image/image4.jpg" alt="sport 4"></li>
+            <li><img src="image/image5.jpg" alt="sport 5"></li>
+            <li><img src="image/image6.jpg" alt="sport 6"></li>
+            <li><img src="image/image7.jpg" alt="sport 7"></li>
+        </ul>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+    </div>
+    <div class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</body>
+</html>
