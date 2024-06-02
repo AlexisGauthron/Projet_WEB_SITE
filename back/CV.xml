@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CV>
+    <InformationsPersonnelles>
+        <Nom>Dupont</Nom>
+        <Prenom>Jean</Prenom>
+        <Adresse>
+            <Rue>123 Rue des Sports</Rue>
+            <Ville>Paris</Ville>
+            <CodePostal>75000</CodePostal>
+            <Pays>France</Pays>
+        </Adresse>
+        <Telephone>+33 1 23 45 67 89</Telephone>
+        <Email>jean.dupont@example.com</Email>
+    </InformationsPersonnelles>
+    
+    <Profil>
+        <Description>
+            Coach de sport passionné avec plus de 10 ans d'expérience dans l'entraînement d'athlètes de tous niveaux. Spécialisé dans le développement de programmes de fitness personnalisés et l'amélioration des performances sportives.
+        </Description>
+    </Profil>
+
+    <ExperienceProfessionnelle>
+        <Experience>
+            <Poste>Coach de Sport</Poste>
+            <Entreprise>Gymnase Club</Entreprise>
+            <Lieu>Paris, France</Lieu>
+            <Dates>Janvier 2015 - Présent</Dates>
+            <Responsabilites>
+                <Responsabilite>Développement de programmes d'entraînement personnalisés</Responsabilite>
+                <Responsabilite>Suivi des progrès des clients</Responsabilite>
+                <Responsabilite>Organisation de séances de groupe</Responsabilite>
+                <Responsabilite>Encadrement et motivation des athlètes</Responsabilite>
+            </Responsabilites>
+        </Experience>
+        <Experience>
+            <Poste>Entraîneur Adjoint</Poste>
+            <Entreprise>Club Athlétique de Lyon</Entreprise>
+            <Lieu>Lyon, France</Lieu>
+            <Dates>Septembre 2010 - Décembre 2014</Dates>
+            <Responsabilites>
+                <Responsabilite>Assistance dans la préparation des entraînements</Responsabilite>
+                <Responsabilite>Encadrement des jeunes athlètes</Responsabilite>
+                <Responsabilite>Suivi des performances en compétition</Responsabilite>
+            </Responsabilites>
+        </Experience>
+    </ExperienceProfessionnelle>
+
+    <Formation>
+        <Diplome>
+            <Titre>Licence en Sciences et Techniques des Activités Physiques et Sportives (STAPS)</Titre>
+            <Etablissement>Université de Paris</Etablissement>
+            <Annee>2010</Annee>
+        </Diplome>
+        <Certificat>
+            <Titre>Certificat de Coach Personnel</Titre>
+            <Etablissement>Fédération Française de Fitness</Etablissement>
+            <Annee>2011</Annee>
+        </Certificat>
+    </Formation>
+
+    <Competences>
+        <Competence>Développement de programmes d'entraînement</Competence>
+        <Competence>Motivation et leadership</Competence>
+        <Competence>Suivi des progrès</Competence>
+        <Competence>Gestion de groupe</Competence>
+    </Competences>
+
+    <Langues>
+        <Langue>
+            <Nom>Français</Nom>
+            <Niveau>Langue maternelle</Niveau>
+        </Langue>
+        <Langue>
+            <Nom>Anglais</Nom>
+            <Niveau>Courant</Niveau>
+        </Langue>
+    </Langues>
+
+    <Interets>
+        <Interet>Course à pied</Interet>
+        <Interet>Natation</Interet>
+        <Interet>Lecture sur la nutrition sportive</Interet>
+    </Interets>
+</CV>
