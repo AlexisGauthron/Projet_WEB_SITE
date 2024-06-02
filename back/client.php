@@ -2,7 +2,7 @@
 echo '<meta charset="utf-8">';
 
 function affichage($db_handle, $email){
-			$sql = "SELECT ID_Consultation,Date,Heure,Commentaire,NomCoach,PrénomCoach,Specialité FROM Consultation,Client,Coach WHERE IDclient = ID_Client AND EmailClient = '$email' AND IDcoach = ID_Coach;";
+			$sql = "SELECT ID_Consultation,Date,Heure,Commentaire,NomCoach,PrénomCoach,Specialité FROM Consultation,Client,Coach WHERE IDclient = ID_Client AND EmailClient = '$email' AND IDcoach = ID_Coach ORDER BY Date,Heure ASC ;";
 			//echo"$sql";
 			$result = mysqli_query($db_handle,$sql);
 			if (mysqli_num_rows($result) > 0) {
@@ -44,9 +44,10 @@ function connexion($db_handle,$email1,$mdp1) {
 		}else{
 			echo $mot['Mot_de_passe'];
 			if ($mot['Mot_de_passe'] == $mdp1){
-				echo "bon mdp";
+				//echo "bon mdp";
 			}else {
 				echo "pas bon mdp";
+				header('Location: client.html');
 				$erreur = true;
 			}
 		}
@@ -123,6 +124,7 @@ if ($db_found) {
 		$sql = "DELETE FROM Consultation WHERE ID_Consultation = '$consultation' ";
 		$result = mysqli_query($db_handle, $sql);
 		echo "<p>Votre rendez-vous a bien été supprimé</p><p>Voici vos prohaines consultations</p>";
+		//header('Location: client.php');
 		affichage($db_handle, $email1);
 	}
 
