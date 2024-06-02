@@ -56,7 +56,7 @@
             </div>
             <div class="card">
                 <div class="card-image">
-                    <a href="../back/admin.html">
+                    <a href="../back/admin.php">
                         <img src="image/administrateur.webp" alt="">
                         <div class= "texte_p">
                             <h2><i> Administrateur </i></h2>
