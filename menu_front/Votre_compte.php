@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
 </head>
 <body>
     <header class="Votre_Compte">
@@ -74,10 +73,9 @@
             strings: ['<i><b>Votre Compte !<b><i>'],
             typeSpeed: 150,
             backSpeed: 150,
-            loop: true,
-            fadeOut: true,
-            fadeOutClass: 'typed-fade-out',
-            fadeOutDelay: 500
+            onComplete: (self) => {
+                document.querySelector('.typed-cursor').style.display = 'none';
+            }
         });
     </script>
 </body>
