@@ -1,3 +1,4 @@
+<h1>Retour à la page de <a href="admin_login.html">connexion</a></h1>
 <?php
 echo '<meta charset="utf-8">';
 
