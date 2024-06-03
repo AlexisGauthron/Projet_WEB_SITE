@@ -35,12 +35,34 @@ body {
 
 }
 
+.espace {
+    height: 8vh;
+}
+
+.container_titre_recherche {
+    position: relative;
+    justify-content: center;
+    padding-top: 10%;
+    height: 100vh;
+    width: 100%;
+}
+.container_titre_recherche h1 {
+    color: #ffffff;
+    font-size: 70px;
+    text-align: center;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+    z-index: 1000;
+
+}
+
+
 .auto-typing {
     text-shadow: 10px 10px 30px white;
 }
 
 .auto-typing_n {
-    text-shadow: 10px 10px 30px rgba(255, 255, 255, 0.8);
+    text-shadow: 10px 10px 30px rgba(0, 0, 0, 0.8);
 }  
 
 .navbar {
@@ -104,14 +126,14 @@ body {
 
 .card {
     border: 2px solid #ccc;
-        border-radius: 15px;
-        overflow: hidden;
-        height: 90%;
-        box-shadow: 20px 20px 20px rgba(255, 255, 255, 0.8);
-        max-width: 350px;
-        width: 100%;
-        margin: 4vh;
-        align-items: center;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 90%;
+    box-shadow: 20px 20px 20px rgba(255, 255, 255, 0.8);
+    max-width: 350px;
+    width: 100%;
+    margin: 4vh;
+    align-items: center;
 }
 
 
@@ -159,4 +181,60 @@ body {
 
 .card-image a {
     color: inherit;
+}
+
+.tableau {
+    width: 75%;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 5px 5px 40px white;
+}
+
+.tableau td {
+    font-size: 3vh;
+    text-align: center;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 3%;
+    border-radius: 12px;
+}
+
+.blanc {
+    background-color: white;
+    border: 10px solid black;
+}
+
+.gradient {
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(45deg,#e26732, #61e23d);
+    color: white;
+}
+
+.connect {
+    background-color: black;
+}
+
+.connect input{
+    color: white;
+    size: 60;
+    text-shadow: 10px 10px 30px white;
+}
+
+.connect input:hover{
+    color: black;
+    font-weight: bolder;
+}
+
+.connect_recher input:hover {
+    color: red;
+}
+
+.php {
+    color: red;
+    font-weight: bold;
+    padding: 3%;
+    text-align: center;
+    font-size: 7vh;
+    z-index: 1;
 }
