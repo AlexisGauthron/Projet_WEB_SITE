@@ -24,11 +24,6 @@ td {
     border: 10px solid black;
 }
 
-td.center {
-    text-align: center;
-}
-
-
 #delete {
     padding-left: 50px;
 }

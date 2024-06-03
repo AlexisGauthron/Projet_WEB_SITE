@@ -29,6 +29,7 @@
             <div class="collapse navbar-collapse" id="main-navigation">
                 <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="../acceuil.html">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" href="competitions.html">Sport de Compétition</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">A propos</a></li>
                 </ul>
             </div>
@@ -68,7 +69,7 @@
                 }
             ?>
         </div>
-    </div>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
