@@ -58,7 +58,7 @@
 			$sql = "";
 
 			$errorMessage = "";
-			$message ="";
+			$message = "";
 
 			function affichage($db_handle, $email){
 				$sql = "SELECT ID_Consultation,Date,Heure,Commentaire,NomCoach,PrénomCoach,Specialité FROM Consultation,Client,Coach WHERE IDclient = ID_Client AND EmailClient = '$email' AND IDcoach = ID_Coach ORDER BY Date,Heure ASC ;";
