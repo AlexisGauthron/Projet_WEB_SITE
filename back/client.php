@@ -1,6 +1,27 @@
 <?php
 echo '<meta charset="utf-8">';
 
+session_start();
+
+/*if(version_compare(phpversion(),'4.3.0')>=0) {
+
+	$nomSession = 'session'
+    if(!ereg('^SESS[0-9]+$',$_REQUEST[$nomSession])) {
+
+        $_REQUEST['SESSION_NAME']='SESS'.uniqid('');
+
+    }
+
+    
+
+    output_add_rewrite_var($nomSession,$_REQUEST[$nomSession]);
+
+    session_name($_REQUEST[$nomSession]);
+
+}*/
+
+
+
 function affichage($db_handle, $email){
 			$sql = "SELECT ID_Consultation,Date,Heure,Commentaire,NomCoach,PrénomCoach,Specialité FROM Consultation,Client,Coach WHERE IDclient = ID_Client AND EmailClient = '$email' AND IDcoach = ID_Coach ORDER BY Date,Heure ASC ;";
 			//echo"$sql";
@@ -34,10 +55,13 @@ function affichage($db_handle, $email){
 }
 
 function connexion($db_handle,$email1,$mdp1) {
-	$sql = "SELECT Mot_de_passe FROM Client WHERE EmailClient ='$email1' ";
+	$sql = "SELECT Mot_de_passe,ID_Client FROM Client WHERE EmailClient ='$email1' ";
 		//echo "$sql";
 		$result = mysqli_query($db_handle,$sql);
 		$mot = mysqli_fetch_assoc($result);
+		echo "row !! ".$mot["ID_Client"];
+		$_SESSION['ID_Client'] = $mot["ID_Client"];
+		echo "session !! ".$_SESSION['ID_Client'];
 		if ( $mot ==0){
 			echo "Pas de compte avec cette adresse mail créez un compte ou réessayez";
 			$erreur = true;
@@ -60,6 +84,8 @@ function connexion($db_handle,$email1,$mdp1) {
 $database = "Projet";
 $db_handle = mysqli_connect('localhost', 'root', 'root');
 $db_found = mysqli_select_db($db_handle, $database);
+
+
 
 
 $nom = isset($_POST["Nom"])? $_POST["Nom"] : "";
@@ -97,6 +123,8 @@ if ($db_found) {
 			$result = mysqli_query($db_handle, $sql);
 			if (mysqli_num_rows($result) > 0) {
 				echo  "<p>Un compte avec cette adresse mail existe déjà.</p>";
+				header('Location : client.html');
+
 			} else {
 				$sql = "SELECT MAX(ID_Client) AS id_max FROM Client";
     			$result = mysqli_query($db_handle, $sql);
@@ -110,6 +138,7 @@ if ($db_found) {
                 
                 if (mysqli_stmt_execute($stmt)) {
                     echo "<p>Compte créé avec succès.</p>";
+                    $_SESSION['ID_Client'] = $row["id_max"];
                 } else {
                     echo "<p>Erreur lors de la création du compte : " . mysqli_error($db_handle) . "</p>";
                 }

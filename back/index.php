@@ -4,7 +4,7 @@ header('Content-Type: application/json');
 $servername = "localhost";
 $username = "root";
 $password = "root"; // MAMP utilise "root" comme mot de passe par défaut
-$dbname = "nom_de_votre_base_de_donnees";
+$dbname = "Projet";
 
 // Créer la connexion
 $conn = new mysqli($servername, $username, $password, $dbname);

@@ -1,10 +1,29 @@
 <?php
 echo '<meta charset="utf-8">';
 
+/*if(version_compare(phpversion(),'4.3.0')>=0) {
+
+	$nomSession = 'session'
+    if(!ereg('^SESS[0-9]+$',$_REQUEST[$nomSession])) {
+
+        $_REQUEST['SESSION_NAME']='SESS'.uniqid('');
+
+    }
+
+    
+
+    output_add_rewrite_var($nomSession,$_REQUEST[$nomSession]);
+
+    session_name($_REQUEST[$nomSession]);
+
+}*/
+
+
 $database = "Projet";
 $db_handle = mysqli_connect('localhost', 'root', 'root');
 $db_found = mysqli_select_db($db_handle, $database);
 
+session_start();
 
 $nom = isset($_POST["Nom"])? $_POST["Nom"] : "";
 $prenom = isset($_POST["Prénom"])? $_POST["Prénom"] : "";
@@ -15,6 +34,7 @@ $sql = "";
 if ($db_found) {
 
 	if(isset($_POST['connexion'])) { 
+		//echo $_SESSION['ID_Client'];
 		$sql = "SELECT * FROM Coach WHERE NomCoach = '$nom' AND PrénomCoach = '$prenom' AND EmailCoach = '$email'";
 		//echo "$sql";
 		$result = mysqli_query($db_handle,$sql);
