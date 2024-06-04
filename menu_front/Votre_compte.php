@@ -36,7 +36,7 @@
         <div class= "ligne">
             <div class="card">
                 <div class="card-image">
-                    <a href="../back/client.html">
+                    <a href="../back/client.php">
                         <img src="image/client.webp" alt="">
                         <div class= "texte_p">
                             <h2><i> Client </i></h2>
