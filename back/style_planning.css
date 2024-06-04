@@ -1,12 +1,13 @@
-.container_titre {
+.container_titre_plan {
     position: relative;
     justify-content: center;
-    padding-top: 17%;
-    height: 100vh;
+    padding-top: 10%;
+    padding-bottom: 3%;
+    height: auto;
     width: 100%;
 }
-.container_titre h1 {
-    color: #ffffff;
+.container_titre_plan h1 {
+    color: white;
     font-size: 70px;
     text-align: center;
     font-weight: bolder;
@@ -47,28 +48,27 @@ text-shadow: 10px 10px 30px white;
     justify-content: flex-end;
 }
 
-h1{
+
+.sem {
     text-align: center;
+    padding: 3vh;
     color: white;
-    background-color: black;
-    padding: 5px;
-    border-radius: 15px;
+    font-weight: bolder;
 }
 
 #container {
-    width: 500px;
-    height: 655px;
+    width: 80%;
+    height: 100%;
     margin: auto;
-    background-color: #cccccc;
-    border: 1px solid black;
+    color: white;
+    font-weight: bolder;
     border-radius: 5px;
+    text-align: center;
 }
 
 #gameGrid {
     width: 480px;
     height: 480px;
-    background-color: #ccccdd;
-    border : 1px dashed green;
     margin-top: 3%;
     margin: auto;
 }
@@ -88,6 +88,7 @@ h1{
     height: 30px;
     margin-left: 5px;
     margin-top: 5px;
+    color: white;
 }
 
 .green{
@@ -114,7 +115,6 @@ h1{
     margin-top:3% ;
     font-size: 25px;
     height: 30px;
-    color: black;
     background-color: #aaccbb;
     text-align: center;
     border-radius: 5px;
@@ -136,4 +136,8 @@ h1{
     margin-top: 3%;
     margin: auto;
     display: block;
+}
+
+.style_colonne{
+    display: flex;
 }

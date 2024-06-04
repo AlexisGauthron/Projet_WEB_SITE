@@ -76,8 +76,8 @@
                     }
 
                     if ($test == 1){
-                        $error_message = "Il y a des résultats.";
-                    } else $error_message = "Il n'y a pas de résultats.";
+                        $error_message = "Il y a des résultats !";
+                    } else $error_message = "Il n'y a pas de résultats !";
                 }
             ?>
 
@@ -124,6 +124,7 @@
                             echo '<button class="service-button">Voir son CV</button>';
                         echo '</div>';
                     echo '</div>';
+
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo '<div class="carte rouge">';
                         echo '<div class="entete">';
