@@ -62,8 +62,8 @@
                                 echo '<input type="submit" name="RDV" value="Prendre un RDV">';
                             echo '</form>';
                         echo '</div>';
-                        echo '<button class="service-button">Communiquer avec le coach</button>';
-                        echo '<button class="service-button">Voir son CV</button>';
+                    echo '<button class="service-button"><a href="../back/parler.html">Communiquer avec le coach</a></button>';
+                    echo '<button class="service-button">Voir son CV</button>';
                     echo '</div>';
                 echo '</div>';
                 }
