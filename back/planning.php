@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
+<?php
+ session_start();
+ ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -275,13 +278,17 @@
  		ini_set('display_errors', 1);
 		ini_set('display_startup_errors', 1);
 		error_reporting(E_ALL);
+		
+
  		$database = "Projet";
 		$db_handle = mysqli_connect('localhost', 'root', 'root');
 		$db_found = mysqli_select_db($db_handle, $database);
 		$idcoach = isset($_POST["idcoach"])? $_POST["idcoach"] : "";
 		$idcoach = intval($idcoach);
+
+		$idclient = $_SESSION['ID_Client'];
 		if ($db_found) {
-	        $sql = "SELECT Date,Heure FROM Coach,Consultation WHERE ID_Coach = $idcoach AND ID_Coach = IDcoach";
+	        $sql = "SELECT Date,Heure FROM Coach,Consultation WHERE ID_Coach = $idcoach AND ID_Coach = IDcoach AND IDclient = $idclient ";
 	        $result = mysqli_query($db_handle, $sql);
 	        $nbresult = mysqli_num_rows($result);
 			$dates =array();
